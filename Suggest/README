@@ -1,0 +1,75 @@
+Description:
+	* This predictive text suggestion program uses an R-Way Trie (R=8 in our case) to represent an 
+          input sequence of numbers typed through a numeric keypad (as in mobile phones).
+	* Each node in the Trie consists of a map of strings along with their frequency counts. 
+	* Given a key, the program returns possible strings in decreasing order	of popularity in the 
+          given input corpus.
+	* I have also implemented the prefix feature: given a prefix word, generate all the (longer) 
+          words matching this prefix.
+	
+Instructions to run the program:
+Step 1: Extract the .tar.gz to a directory and cd into the extracted directory
+
+Step 2:
+     This program can be run either using the runnable jar as follows:
+     	$ java -jar SuggestClimateCorp.jar <path/to/inputCorpus> <inputSequence>
+     or also as follows:
+     	$ cd SuggestClimateCorp/bin
+     	$ java com.climate.PredictiveText.Suggest <path/to/inputCorpus> <inputSequence>
+     	
+Sample Output:
+	Following are test cases for this program:
+	
+	1. Valid input file and sequence
+	$ java -jar SuggestClimateCorp.jar SuggestClimateCorp/alice_in_wonderland.txt 729
+
+	Parsing file /Users/preetam/T9/SuggestClimateCorp/alice_in_wonderland.txt
+	Exact matches for 729:
+	say
+	saw
+	paw
+	raw
+	Prefix matches for 729: 
+	saying
+	says
+	paws
+	
+	2. Invalid file and valid input sequence
+	$ java -jar SuggestClimateCorp.jar SuggestClimateCorp/bad.txt 729
+
+	SuggestClimateCorp/bad.txt is not a valid file
+	
+	3. Valid file and invalid input sequence
+	$ java -jar SuggestClimateCorp.jar SuggestClimateCorp/alice_in_wonderland.txt ^9$%#-178
+
+	Invalid input sequence, out of range [2-9]
+		
+	4. Search misses for exact matches but search hits for prefix matches:
+	$ java -jar SuggestClimateCorp.jar SuggestClimateCorp/alice_in_wonderland.txt 227
+
+	Parsing file /Users/preetam/T9/SuggestClimateCorp/alice_in_wonderland.txt
+	Exact matches for 227:
+	No sequences found!
+	Prefix matches for 227: 
+	case
+	care
+	cardboard
+	carefully
+	absence
+	cards
+	cares
+	capering
+	capital
+	bark
+	barleysugar
+	barking
+	across
+	carried
+	carrier
+	carroll
+	barrowful
+	carry
+	carrying
+	carthorse
+	absurd
+	cartwheels
